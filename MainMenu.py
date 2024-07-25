@@ -1,4 +1,15 @@
+"""
+This script serves as the main menu for the Library Management System, providing various operations related to books, genres, users, and authors.
+"""
+
+from database import connect_to_db, add_book, add_genre, add_user, add_author
+from validation import validate_isbn
+
+
 def main_menu():
+    """
+    Displays the main menu and handles user input for various library operations.
+    """
     with connect_to_db('library.db') as conn:
         print("Welcome to the Library Management System!")
         print("Main Menu:")
@@ -30,10 +41,11 @@ def main_menu():
             name = input("Enter the author name: ")
             add_author(conn, name)
         elif choice == "5":
-            print("Thank you for using the Library Management System.")
+            print("Thanking you for using the Library Management System.")
             exit()
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main_menu()
